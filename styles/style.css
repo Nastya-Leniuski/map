@@ -1,0 +1,162 @@
+body{
+    font-family: 'Open Sans',Arial,sans-serif;
+    font-size: 1em;
+    color: #eee;
+    background-color: #383838;
+}
+p{
+    padding: 0;
+    margin: 0;
+}
+.map{   
+    width: 900px;
+    height: 430px;
+    position: relative;
+    margin: 70px auto;
+    background-image: url(../images/20140812113042.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: -260px;
+    border: 5px solid #c0c0c0;
+}
+.point {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #ec143c;
+    position: absolute;
+    cursor: pointer;
+}
+
+.point:before, .point:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    display: block;
+    border-radius: 50%;
+    border: 1px solid #f3244a;
+    transition: all 0.2s ease-in-out;
+    width: 0;
+    height: 0;
+    margin-left: -2px;
+    margin-top: -2px;
+}
+@keyframes pointBefore{
+    from{
+        width: 0;
+        height: 0;
+        margin-left: -2px;
+        margin-top: -2px;
+    }
+    to{
+        width: 40px;
+        height: 40px;
+        margin-left: -21px;
+        margin-top: -21px;
+        opacity: 0;
+    }
+}
+@keyframes pointAfter{
+    from{
+        width: 0;
+        height: 0;
+        margin-left: -2px;
+        margin-top: -2px;
+    }
+    to{
+        width: 60px;
+        height: 60px;
+        margin-left: -31px;
+        margin-top: -31px;
+        opacity: 0;
+    }
+}
+.point:before {
+    animation: pointBefore 1s infinite;
+}
+.point:after {
+    animation: pointAfter 1s infinite;
+}
+.point:hover:before, .point:hover:after {
+    animation-play-state: paused ;
+}
+.point .town{
+    position: absolute;
+    top: -1px;
+    left: 20px;
+    color: black;
+    text-shadow: 1px 1px 0px #c0c0c0;
+}
+.point.hamburg{
+    left: 325px;
+    top: 95px;
+}
+.point.krakow{
+    left: 450px;
+    top: 160px;
+}
+.point.turin{
+    left: 290px;
+    top: 254px;
+}
+.point.madrid{
+    left: 105px;
+    top: 304px;
+}
+
+.point .tickets {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    min-width: 150px;
+    height: 80px;
+    background: #333;
+    padding: 10px;
+    bottom: 22px;
+    left: -8px;
+    transform: rotateY(90deg);
+    transition: all 0.2s ease-in-out 0.5s;
+}
+.point .tickets:before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: #333;
+    position: absolute;
+    bottom: -5px;
+    transform: rotateZ(45deg);
+}
+.point:hover .tickets {
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 0s;
+    transform: rotateY(0deg);
+}
+.point .tickets .place {
+    font-family: "Times New Roman";
+    font-size: 12px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.point .tickets .date {
+    font-size: 12px;
+    font-style: italic;
+}
+.point .tickets button {
+    display: block;
+    min-width: 150px;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 12px;
+    border: none;
+    text-align: center;
+    text-transform: uppercase;
+    color: whitesmoke;
+    background-color: #ee0b34;
+    transition: all 0.2s ease-in-out;
+
+}
+.point .tickets button:hover {
+    background-color: #f81fa1;
+}
